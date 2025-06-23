@@ -34,6 +34,26 @@ CREATE TABLE api_logs (
     level VARCHAR(10),
     message TEXT
 );
+# create patient_form
+CREATE TABLE patient_form (
+    visit_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    patient_id INT,
+    Duration_of_Diabetes INT,
+    HbA1c_Level FLOAT,
+    Blood_Pressure FLOAT,
+    Fasting_Blood_Glucose FLOAT,
+    BMI FLOAT,
+    Cholesterol FLOAT,
+    Age INT,
+    Albuminuria FLOAT,
+    Visual_Acuity VARCHAR(255),
+    Date_of_registration DATE,
+    Hospital_name VARCHAR(255),
+    num_visits INT,
+    mobile_number VARCHAR(15),
+    gender VARCHAR(10)
+);
 
 # THE pipeline is running in only in cpu but nor GPU
     rate(container_cpu_usage_seconds_total{container="fastapi"}[1m]) * 100 number of api hits
