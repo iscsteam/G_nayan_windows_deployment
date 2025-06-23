@@ -1,0 +1,20 @@
+fastapi
+pydantic
+Pillow
+numpy
+opencv-python
+requests
+uvicorn
+python-multipart
+pyyaml
+starlette
+itsdangerous
+python-dotenv
+datetime
+efficientnet_pytorch
+minio
+torch
+torchvision
+mysql-connector-python
+sqlalchemy
+prometheus-fastapi-instrumentator>=6.0.0 # <--- CHANGE THIS

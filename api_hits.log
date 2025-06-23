@@ -1,0 +1,156 @@
+2025-05-05 20:00:53,960 - INFO - [START] Inference API hit for patient: 35 from 172.19.0.1
+2025-05-05 20:01:11,586 - INFO - [SUCCESS] Processed inference for 35 | Duration: 17.63s
+2025-05-05 20:11:26,221 - INFO - Data inserted successfully for patient id 181
+2025-05-05 20:14:25,312 - INFO - [START] Inference API hit for patient: 189 from 172.19.0.1
+2025-05-05 20:14:36,011 - WARNING - Both images identified as Right eye. Missing left eye image.
+2025-05-05 20:27:48,741 - INFO - [START] Inference API hit for patient: 46 from 172.19.0.1
+2025-05-05 20:27:58,020 - WARNING - Both images identified as Right eye. Missing left eye image.
+2025-05-05 21:04:14,883 - INFO - [START] Inference API hit for patient: 49 from 172.19.0.1
+2025-05-05 21:04:23,615 - WARNING - Both images identified as Left eye. Missing right eye image.
+2025-05-06 05:03:04,500 - INFO - [START] Inference API hit for patient: 56 from 172.19.0.1
+2025-05-06 05:03:13,380 - INFO - [SUCCESS] Processed inference for 56 | Duration: 8.88s
+2025-05-06 06:31:54,051 - INFO - [START] Inference API hit for patient: 123 from 172.19.0.1
+2025-05-06 06:32:10,363 - INFO - [SUCCESS] Processed inference for 123 | Duration: 16.31s
+2025-05-06 06:36:03,034 - INFO - [START] Inference API hit for patient: 678 from 172.19.0.1
+2025-05-06 06:36:07,747 - INFO - [SUCCESS] Processed inference for 678 | Duration: 4.71s
+2025-05-06 11:51:08,838 - INFO - [START] Inference API hit for patient: 123 from 172.19.0.1
+2025-05-06 11:51:23,536 - INFO - [SUCCESS] Processed inference for 123 | Duration: 14.70s
+2025-05-06 12:09:58,613 - INFO - [START] Inference API hit for patient: 908 from 172.19.0.1
+2025-05-06 12:10:00,230 - INFO - [SUCCESS] Processed inference for 908 | Duration: 1.62s
+2025-05-07 08:17:52,617 - INFO - [START] Inference API hit for patient: 113 from 172.19.0.1
+2025-05-07 08:18:06,168 - WARNING - Both images identified as Left eye. Missing right eye image.
+2025-05-07 09:05:03,108 - INFO - Data inserted successfully for patient id 181
+2025-05-07 09:15:53,522 - INFO - [START] Inference API hit for patient: 119 from 172.19.0.1
+2025-05-07 09:15:55,596 - WARNING - Both images identified as Right eye. Missing left eye image.
+2025-05-07 09:16:07,769 - INFO - [START] Inference API hit for patient: 119 from 172.19.0.1
+2025-05-07 09:16:12,029 - INFO - [SUCCESS] Processed inference for 119 | Duration: 4.26s
+2025-05-07 09:47:49,318 - INFO - [START] Inference API hit for patient: 131 from 172.19.0.1
+2025-05-07 09:47:51,183 - INFO - [SUCCESS] Processed inference for 131 | Duration: 1.87s
+2025-05-07 09:48:02,810 - INFO - [START] Inference API hit for patient: 132 from 172.19.0.1
+2025-05-07 09:48:04,642 - INFO - [SUCCESS] Processed inference for 132 | Duration: 1.83s
+2025-05-07 09:48:13,446 - INFO - [START] Inference API hit for patient: 133 from 172.19.0.1
+2025-05-07 09:48:14,826 - WARNING - Both images identified as Left eye. Missing right eye image.
+2025-05-07 09:48:37,245 - INFO - [START] Inference API hit for patient: 133 from 172.19.0.1
+2025-05-07 09:48:38,472 - WARNING - Both images identified as Left eye. Missing right eye image.
+2025-05-07 09:48:53,492 - INFO - [START] Inference API hit for patient: 133 from 172.19.0.1
+2025-05-07 09:48:54,739 - WARNING - Both images identified as Left eye. Missing right eye image.
+2025-05-07 09:49:07,766 - INFO - [START] Inference API hit for patient: 133 from 172.19.0.1
+2025-05-07 09:49:09,924 - INFO - [SUCCESS] Processed inference for 133 | Duration: 2.16s
+2025-05-07 11:36:42,105 - INFO - [START] Inference API hit for patient: 133 from 172.19.0.1
+2025-05-07 11:36:51,510 - INFO - [SUCCESS] Processed inference for 133 | Duration: 9.41s
+2025-05-07 11:44:40,588 - INFO - [START] Inference API hit for patient: 136 from 172.19.0.1
+2025-05-07 11:44:44,663 - INFO - [SUCCESS] Processed inference for 136 | Duration: 4.07s
+2025-05-07 14:13:59,749 - INFO - [START] Inference API hit for patient: 139 from 172.19.0.1
+2025-05-07 14:14:03,405 - INFO - [SUCCESS] Processed inference for 139 | Duration: 3.66s
+2025-05-07 14:47:16,767 - INFO - Data inserted successfully for patient id 181
+2025-05-07 14:47:54,285 - INFO - Data inserted successfully for patient id 1811212
+2025-06-19 09:37:28,488 - INFO - [START] Inference API hit for patient: 123 from 172.18.0.1
+2025-06-19 09:37:45,033 - INFO - [SUCCESS] Processed inference for 123 | Duration: 16.54s
+2025-06-19 10:38:55,108 - INFO - [START] Inference API hit for patient: 123 from 172.18.0.1
+2025-06-19 10:39:09,504 - INFO - [SUCCESS] Processed inference for 123 | Duration: 14.40s
+2025-06-19 10:43:06,235 - INFO - [START] Inference API hit for patient: 123 from 172.18.0.1
+2025-06-19 10:43:12,846 - INFO - [SUCCESS] Processed inference for 123 | Duration: 6.61s
+2025-06-19 13:09:42,263 - INFO - Data inserted successfully for patient id 181
+2025-06-20 07:37:38,926 - ERROR -  Error retrieving patient data: name 'patient_id' is not defined
+2025-06-20 07:46:00,559 - ERROR -  Error retrieving patient data: name 'patient_id' is not defined
+2025-06-20 07:46:56,005 - ERROR -  Error retrieving patient data: name 'patient_id' is not defined
+2025-06-20 07:47:37,192 - ERROR -  Error retrieving patient data: name 'patient_id' is not defined
+2025-06-20 07:48:02,267 - INFO - Data inserted successfully for patient id 123
+2025-06-20 07:58:59,405 - ERROR -  Error retrieving patient data: name 'patient_id' is not defined
+2025-06-20 07:59:44,081 - INFO - Data get successfully for patient id 123
+2025-06-20 08:00:20,801 - INFO - Data get successfully for patient id 1006
+2025-06-20 08:00:44,292 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-06-20 08:01:04,094 - ERROR - An error occurred: 400: HbA1c Level must be between 4.0% and 14.0%.
+2025-06-20 08:01:15,844 - INFO - Data get successfully for patient id 1006
+2025-06-20 08:01:26,830 - ERROR -  Error retrieving patient data: name 'patient_id' is not defined
+2025-06-20 08:02:49,198 - ERROR -  Error retrieving patient data: name 'patient_id' is not defined
+2025-06-20 08:03:15,358 - INFO - Data get successfully for patient id 123
+2025-06-20 08:03:39,666 - INFO -  Deleted patient with patient_id 123
+2025-06-20 08:03:47,058 - ERROR - An error occurred: 404: Patient not found
+2025-06-20 08:04:36,171 - INFO - Data updated successfully for patient id 1006
+2025-06-20 08:04:49,973 - ERROR -  Error retrieving patient data: name 'patient_id' is not defined
+2025-06-20 08:07:57,844 - ERROR - An error occurred: 404: Patient not found
+2025-06-20 08:08:23,311 - ERROR - An error occurred: 400: HbA1c Level must be between 4.0% and 14.0%.
+2025-06-20 08:08:37,711 - ERROR - An error occurred: 400: Blood Pressure must be between 90 and 200 mmHg.
+2025-06-20 08:09:30,063 - ERROR - An error occurred: 400: Blood Pressure must be between 90 and 200 mmHg.
+2025-06-20 08:09:55,587 - ERROR - An error occurred: 400: Fasting Blood Glucose must be between 70 and 300 mg/dL.
+2025-06-20 08:10:09,105 - ERROR - An error occurred: 400: BMI must be between 15 and 50 kg/m².
+2025-06-20 08:10:27,347 - ERROR - An error occurred: 400: Cholesterol must be between 100 and 300 mg/dL.
+2025-06-20 08:10:43,335 - ERROR - An error occurred: 400: Age must be between 18 and 90 years.
+2025-06-20 08:10:56,796 - ERROR - An error occurred: 400: Albuminuria must be between 0.5 and 3.0 mg/dL.
+2025-06-20 08:11:09,524 - ERROR - An error occurred: 400: Visual Acuity must be one of: Normal, Mild, Moderate, Severe, Proliferative
+2025-06-20 08:11:47,691 - INFO - Data inserted successfully for patient id 1234567
+2025-06-20 08:12:09,339 - INFO - Data inserted successfully for patient id 1234567
+2025-06-20 08:12:20,083 - INFO - Data inserted successfully for patient id 1234567
+2025-06-20 08:12:40,524 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-06-20 08:13:02,171 - INFO - Data get successfully for patient id 1234567
+2025-06-20 08:14:12,721 - INFO - Data updated successfully for patient id 1234567
+2025-06-20 08:14:22,906 - ERROR -  Error retrieving patient data: name 'patient_id' is not defined
+2025-06-20 08:14:44,672 - INFO - Data get successfully for patient id 1234567
+2025-06-20 08:16:35,356 - INFO -  Deleted patient with patient_id 1234567
+2025-06-20 08:16:43,890 - ERROR - An error occurred: 404: Patient not found
+2025-06-20 08:38:48,842 - INFO - ✅ Data retrieved successfully for all patients
+2025-06-20 08:41:13,116 - INFO - Data updated successfully for patient id 1001
+2025-06-20 08:41:33,930 - INFO - Data get successfully for patient id 1001
+2025-06-20 08:42:24,242 - INFO - Data get successfully for patient id 1001
+2025-06-20 08:42:36,560 - INFO - ✅ Data retrieved successfully for all patients
+2025-06-20 08:43:28,742 - INFO - Data updated successfully for patient id 1001
+2025-06-20 08:43:39,144 - INFO - ✅ Data retrieved successfully for all patients
+2025-06-20 08:44:16,931 - INFO - Data get successfully for patient id 1001
+2025-06-20 08:44:54,855 - INFO - Data updated successfully for patient id 1001
+2025-06-20 08:45:18,167 - INFO - Data get successfully for patient id 1001
+2025-06-20 08:45:45,604 - INFO - Data updated successfully for patient id 1001
+2025-06-20 08:46:01,227 - INFO - ✅ Data retrieved successfully for all patients
+2025-06-20 08:46:30,738 - INFO - Data get successfully for patient id 1001
+2025-06-20 08:49:14,901 - INFO - Data updated successfully for patient id 1001
+2025-06-20 08:49:23,876 - INFO - Data get successfully for patient id 1001
+2025-06-20 08:50:32,187 - INFO - ✅ Data retrieved successfully for all patients
+2025-06-20 08:51:23,970 - INFO - Data updated successfully for patient id 1001
+2025-06-20 08:51:37,794 - INFO - ✅ Data retrieved successfully for all patients
+2025-06-20 08:57:02,860 - INFO - ✅ Data retrieved successfully for all patients
+2025-06-20 08:57:55,052 - INFO - Data updated successfully for patient id 1001
+2025-06-20 08:58:11,781 - INFO - Data get successfully for patient id 1001
+2025-06-20 08:58:52,774 - ERROR - An error occurred: 400: HbA1c Level must be between 4.0% and 14.0%.
+2025-06-20 08:59:06,231 - ERROR - An error occurred: 400: Blood Pressure must be between 90 and 200 mmHg.
+2025-06-20 08:59:19,721 - ERROR - An error occurred: 400: Blood Pressure must be between 90 and 200 mmHg.
+2025-06-20 08:59:27,928 - ERROR - An error occurred: 400: Blood Pressure must be between 90 and 200 mmHg.
+2025-06-20 08:59:47,283 - ERROR - An error occurred: 400: BMI must be between 15 and 50 kg/m².
+2025-06-20 09:00:02,134 - ERROR - An error occurred: 400: Cholesterol must be between 100 and 300 mg/dL.
+2025-06-20 09:00:16,547 - ERROR - An error occurred: 400: Age must be between 18 and 90 years.
+2025-06-20 09:00:25,322 - ERROR - An error occurred: 400: Albuminuria must be between 0.5 and 3.0 mg/dL.
+2025-06-20 09:00:38,373 - ERROR - An error occurred: 400: Visual Acuity must be one of: Normal, Mild, Moderate, Severe, Proliferative
+2025-06-20 09:01:22,759 - INFO - Data inserted successfully for patient id 6789
+2025-06-20 09:01:42,603 - INFO - Data inserted successfully for patient id 6789
+2025-06-20 09:01:46,228 - INFO - Data inserted successfully for patient id 6789
+2025-06-20 09:01:53,580 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-06-20 09:02:12,546 - INFO - Data get successfully for patient id 6789
+2025-06-20 09:04:13,644 - INFO - Data updated successfully for patient id 6789
+2025-06-20 09:04:32,686 - INFO - Data updated successfully for patient id 6789
+2025-06-20 09:04:49,682 - INFO - Data get successfully for patient id 6789
+2025-06-20 09:05:28,636 - INFO - Data inserted successfully for patient id 6789
+2025-06-20 09:06:47,387 - INFO - Data inserted successfully for patient id 6789
+2025-06-20 09:06:57,843 - INFO - Data inserted successfully for patient id 6789
+2025-06-20 09:07:36,433 - INFO - Data inserted successfully for patient id 6789
+2025-06-20 09:07:41,103 - INFO - Data get successfully for patient id 6789
+2025-06-20 09:08:02,865 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-06-20 09:08:33,740 - INFO -  Deleted patient with patient_id 6789
+2025-06-20 09:08:41,588 - ERROR - An error occurred: 404: Patient not found
+2025-06-20 09:08:50,954 - ERROR - Error while updating patient: 404: Patient not found
+2025-06-20 09:09:02,678 - INFO - ✅ Data retrieved successfully for all patients
+2025-06-20 10:42:27,340 - INFO - [START] Inference API hit for patient: 1001 from 172.18.0.1
+2025-06-20 10:42:48,323 - INFO - [SUCCESS] Processed inference for 1001 | Duration: 20.98s
+2025-06-20 11:08:41,927 - INFO - Data inserted successfully for patient id 181
+2025-06-20 11:09:16,671 - INFO - Data inserted successfully for patient id 1001
+2025-06-20 11:12:16,603 - INFO - Data inserted successfully for patient id 181
+2025-06-20 11:12:39,406 - INFO - Data inserted successfully for patient id 1001
+2025-06-20 11:58:15,086 - ERROR - An error occurred: 400: HbA1c Level must be between 4.0% and 14.0%.
+2025-06-20 11:58:24,232 - ERROR - An error occurred: 400: Blood Pressure must be between 90 and 200 mmHg.
+2025-06-20 11:58:38,546 - ERROR - An error occurred: 400: Fasting Blood Glucose must be between 70 and 300 mg/dL.
+2025-06-20 11:58:55,560 - ERROR - An error occurred: 400: BMI must be between 15 and 50 kg/m².
+2025-06-20 11:59:11,742 - ERROR - An error occurred: 400: Cholesterol must be between 100 and 300 mg/dL.
+2025-06-20 11:59:30,123 - ERROR - An error occurred: 400: Albuminuria must be between 0.5 and 3.0 mg/dL.
+2025-06-20 11:59:41,715 - ERROR - An error occurred: 400: Visual Acuity must be one of: Normal, Mild, Moderate, Severe, Proliferative
+2025-06-20 12:00:24,283 - INFO - Data inserted successfully for patient id 9999
+2025-06-20 12:01:01,192 - INFO - [START] Inference API hit for patient: 9999 from 172.18.0.1
+2025-06-20 12:01:18,377 - INFO - [SUCCESS] Processed inference for 9999 | Duration: 17.19s
+2025-06-20 12:12:14,421 - INFO - Data inserted successfully for patient id 9999
