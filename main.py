@@ -805,7 +805,7 @@ def get_combined_patient_report(patient_id: int):
 
     except Exception as e:
         logger.error(f"Error: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error.")
+        raise HTTPException(status_code=500, detail="No records found for this patient ID.")
 
     finally:
         cursor.close()
