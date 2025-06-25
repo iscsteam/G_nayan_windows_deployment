@@ -3,7 +3,7 @@
 services:
   fastapi:
     build: .
-    container_name: fastapi_local_dr
+    container_name: fastapi_G_Nayana_conatiner:v1
     ports:
       - "8000:8000"
     environment:
