@@ -4,7 +4,7 @@ import io
 import numpy as np
 import torch
 import torch.nn as nn
-from fastapi import FastAPI, File, UploadFile, HTTPException,Request,status,Depends
+from fastapi import FastAPI, File, UploadFile, HTTPException,Request,status,Depends,Query
 from fastapi.responses import JSONResponse
 from torchvision import transforms, models
 from PIL import Image
@@ -537,7 +537,6 @@ def get_dr_data():
 
 @app.post("/", status_code=status.HTTP_201_CREATED)
 def create_patient(patient_id: int, form: Form2):
-    # create the DB connection
     conn = connection
     cursor = conn.cursor(dictionary=True)
 
@@ -551,14 +550,19 @@ def create_patient(patient_id: int, form: Form2):
         """, (patient_id,))
         existing_patient = cursor.fetchone()
 
-        # 2. If mobile number mismatch, reject
-        if existing_patient and existing_patient["mobile_number"] != form.mobile_number:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Patient ID exists but with a different mobile number."
-            )
+        # 2. If patient exists, check mobile number
+        if existing_patient:
+            if existing_patient["mobile_number"] != form.mobile_number:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="Patient ID exists but with a different mobile number."
+                )
+            else:
+                logger.info(f"Returning patient {patient_id} – new visit recorded.")
+        else:
+            logger.info(f"New patient {patient_id} – first-time registration.")
 
-        # 3. Validation checks
+        # 3. Validation checks (apply to both new and returning patients)
         if not (0 <= form.Duration_of_Diabetes <= 50):
             raise HTTPException(status_code=400, detail="Duration of Diabetes must be between 0 and 50 years.")
         if not (4.0 <= form.HbA1c_Level <= 14.0):
@@ -573,12 +577,15 @@ def create_patient(patient_id: int, form: Form2):
             raise HTTPException(status_code=400, detail="Cholesterol must be between 100 and 300 mg/dL.")
         if not (18 <= form.Age <= 90):
             raise HTTPException(status_code=400, detail="Age must be between 18 and 90 years.")
-        if not (0.5 <= form.Albuminuria <= 3.0):
-            raise HTTPException(status_code=400, detail="Albuminuria must be between 0.5 and 3.0 mg/dL.")
+        if not (0 <= form.Albuminuria <= 1000):
+            raise HTTPException(status_code=400, detail="Albuminuria must be between 0 and 1000 mg/dL.")
         if form.Visual_Acuity not in ["Normal", "Mild", "Moderate", "Severe", "Proliferative"]:
             raise HTTPException(status_code=400, detail="Visual Acuity must be one of: Normal, Mild, Moderate, Severe, Proliferative")
+        if not (form.mobile_number.isdigit() and len(form.mobile_number) == 10):
+            raise HTTPException(status_code=400, detail="Mobile number must contain exactly 10 digits.")
 
-        # 4. Insert into table
+
+        # 4. Insert the patient visit
         insert_query = """
             INSERT INTO patient_form (
                 patient_id, name, Duration_of_Diabetes, HbA1c_Level, Blood_Pressure,
@@ -598,39 +605,81 @@ def create_patient(patient_id: int, form: Form2):
         ))
 
         conn.commit()
-        
-        logger.info(f"Data inserted successfully for patient id {patient_id}")
-
+        logger.info(f"✅ Patient record created for patient_id {patient_id}")
         return {"message": "Patient record created successfully", "patient_id": patient_id}
+
     except Exception as e:
         logger.error(f"An error occurred: {e}")
-        connection.rollback()  # Rollback the transaction in case of an error
+        conn.rollback()
         raise HTTPException(status_code=500, detail=f"Database error: {e}")
 
     finally:
         cursor.close()
-        #conn.close()
-        
 
 
-@app.get("/patient/{patient_id}", status_code=status.HTTP_200_OK)
-def get_patient(patient_id: int):
+
+@app.get("/patients", status_code=status.HTTP_200_OK)
+def get_patients(
+    page: int = Query(1, ge=1, description="Page number"),
+    limit: int = Query(10, ge=1, le=100, description="Items per page (max 100)")
+):
+   
+
     conn = connection
     cursor = conn.cursor(dictionary=True)
+
     try:
-        cursor.execute("SELECT * FROM patient_form WHERE patient_id = %s", (patient_id,))
+        offset = (page - 1) * limit
+
+        # 1. Fetch total count
+        cursor.execute("SELECT COUNT(*) AS total FROM patient_form")
+        total = cursor.fetchone()["total"]
+
+        # 2. Fetch paginated data
+        cursor.execute("""
+            SELECT * FROM patient_form 
+            ORDER BY visit_id DESC
+            LIMIT %s OFFSET %s
+        """, (limit, offset))
         patients = cursor.fetchall()
-        if not patients:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Patient not found")
-        logger.info(f"Data get successfully for patient id {patient_id}")
-        return patients
+
+        return {
+            "page": page,
+            "limit": limit,
+            "total_patients": total,
+            "total_pages": (total + limit - 1) // limit,  # ceiling division
+            "patients": patients
+        }
+
     except Exception as e:
-        logger.error(f"An error occurred: {e}")
-        connection.rollback()  # Rollback the transaction in case of an error
+        conn.rollback()
         raise HTTPException(status_code=500, detail=f"Database error: {e}")
     finally:
         cursor.close()
-        #conn.close()
+
+
+@app.get("/patients/{patient_id}", status_code=status.HTTP_200_OK)
+def get_patient_by_id(patient_id: int):
+    conn = connection
+    cursor = conn.cursor(dictionary=True)
+
+    try:
+        cursor.execute("SELECT * FROM patient_form WHERE patient_id = %s", (patient_id,))
+        patient = cursor.fetchone()
+
+        if not patient:
+            raise HTTPException(status_code=404, detail="Patient not found")
+
+        return {"message": "Patient found", "patient": patient}
+
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+
+    finally:
+        cursor.close()
+        
+
 
 
 @app.delete("/patient/{patient_id}", status_code=status.HTTP_200_OK)
@@ -703,12 +752,15 @@ def update_patient_partial(patient_id: int, form: PatientPartialUpdate):
                 raise HTTPException(status_code=400, detail="Age must be between 18 and 90")
 
         if "Albuminuria" in update_data:
-            if not (0.5 <= update_data["Albuminuria"] <= 3.0):
-                raise HTTPException(status_code=400, detail="Albuminuria must be between 0.5 and 3.0 mg/dL")
+            if not (0 <= update_data["Albuminuria"] <= 1000):
+                raise HTTPException(status_code=400, detail="Albuminuria must be between 0 and 1000 mg/dL")
 
         if "Visual_Acuity" in update_data:
             if update_data["Visual_Acuity"] not in ["Normal", "Mild", "Moderate", "Severe", "Proliferative"]:
                 raise HTTPException(status_code=400, detail=" Visual Acuity in [Normal, Mild, Moderate, Severe, Proliferative] ")
+        if not (form.mobile_number.isdigit() and len(form.mobile_number) == 10):
+            raise HTTPException(status_code=400, detail="Mobile number must contain exactly 10 digits.")
+
 
         # Build dynamic SQL update statement
         set_clause = ", ".join(f"{key} = %s" for key in update_data.keys())
