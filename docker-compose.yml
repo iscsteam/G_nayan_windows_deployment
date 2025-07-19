@@ -21,7 +21,7 @@ services:
 
   mysql:
     image: mysql:latest
-    container_name: mysql-container
+    container_name: mysql-container1
     
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -38,7 +38,7 @@ services:
 
   minio:
     image: minio/minio
-    container_name: minio_container
+    container_name: minio_containerv1
     ports:
       - "9000:9000"
       - "9001:9001"

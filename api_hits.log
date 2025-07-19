@@ -162,3 +162,103 @@
 2025-06-28 05:13:30,063 - INFO - Data inserted successfully for patient id 10016
 2025-06-28 07:00:49,124 - INFO - [START] Inference API hit for patient: 000 from 172.20.0.1
 2025-06-28 07:00:53,165 - INFO - [SUCCESS] Processed inference for 000 | Duration: 4.04s
+2025-07-17 08:01:56,233 - INFO - New patient 1 – first-time registration.
+2025-07-17 08:01:56,243 - INFO - ✅ Patient record created for patient_id 1
+2025-07-17 08:04:51,653 - INFO - [START] Inference API hit for patient: 1 from 192.168.11.111
+2025-07-17 08:04:51,734 - WARNING - Invalid image detected. Left: non-fundus, Right: Error processing the image: cannot identify image file <_io.BytesIO object at 0x7f8533c29220>
+2025-07-17 09:27:45,797 - INFO - Returning patient 1 – new visit recorded.
+2025-07-17 09:27:45,801 - INFO - ✅ Patient record created for patient_id 1
+2025-07-17 09:28:40,353 - INFO - [START] Inference API hit for patient: 1 from 172.18.0.1
+2025-07-17 09:28:48,019 - INFO - [SUCCESS] Processed inference for 1 | Duration: 7.67s
+2025-07-17 09:42:51,174 - INFO - New patient 2 – first-time registration.
+2025-07-17 09:42:51,182 - INFO - ✅ Patient record created for patient_id 2
+2025-07-17 09:54:46,102 - INFO - New patient 3 – first-time registration.
+2025-07-17 09:54:46,108 - INFO - ✅ Patient record created for patient_id 3
+2025-07-17 10:36:53,251 - INFO - New patient 55 – first-time registration.
+2025-07-17 10:36:53,259 - INFO - ✅ Patient record created for patient_id 55
+2025-07-17 10:37:05,296 - INFO - Returning patient 55 – new visit recorded.
+2025-07-17 10:37:05,303 - INFO - ✅ Patient record created for patient_id 55
+2025-07-17 10:37:16,479 - INFO - New patient 551 – first-time registration.
+2025-07-17 10:37:16,487 - INFO - ✅ Patient record created for patient_id 551
+2025-07-17 11:06:24,369 - INFO - New patient 1111 – first-time registration.
+2025-07-17 11:06:24,376 - INFO - ✅ Patient record created for patient_id 1111
+2025-07-17 11:16:44,945 - INFO - [START] Inference API hit for patient: 1111 from 172.18.0.1
+2025-07-17 11:16:45,317 - INFO - [SUCCESS] Processed inference for 1111 | Duration: 0.37s
+2025-07-17 12:58:12,282 - INFO - New patient 76 – first-time registration.
+2025-07-17 12:58:12,289 - INFO - ✅ Patient record created for patient_id 76
+2025-07-17 12:58:42,922 - INFO - [START] Inference API hit for patient: 076 from 172.18.0.1
+2025-07-17 12:58:43,278 - INFO - [SUCCESS] Processed inference for 076 | Duration: 0.36s
+2025-07-17 13:00:52,497 - INFO - Data inserted successfully for patient id 076
+2025-07-17 13:04:07,797 - INFO - Data inserted successfully for patient id 076
+2025-07-17 13:12:10,957 - INFO - New patient 12 – first-time registration.
+2025-07-17 13:12:10,963 - INFO - ✅ Patient record created for patient_id 12
+2025-07-17 13:12:33,583 - INFO - [START] Inference API hit for patient: 12 from 172.18.0.1
+2025-07-17 13:12:33,952 - INFO - [SUCCESS] Processed inference for 12 | Duration: 0.37s
+2025-07-17 13:12:42,436 - INFO - Data inserted successfully for patient id 12
+2025-07-17 14:14:43,077 - INFO - New patient 153 – first-time registration.
+2025-07-17 14:14:43,083 - INFO - ✅ Patient record created for patient_id 153
+2025-07-17 14:15:06,854 - INFO - [START] Inference API hit for patient: 153 from 172.18.0.1
+2025-07-17 14:15:06,966 - WARNING - Invalid image detected. Left: non-fundus, Right: non-fundus
+2025-07-17 15:29:27,946 - ERROR - Error: 404: No records found for this patient ID.
+2025-07-17 16:05:00,953 - ERROR - Error: 404: No records found for this patient ID.
+2025-07-17 16:06:40,775 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-07-17 16:06:48,609 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-07-17 19:12:25,576 - ERROR - Error: 404: No records found for this patient ID.
+2025-07-17 19:12:33,654 - ERROR - Error: 404: No records found for this patient ID.
+2025-07-18 05:08:02,277 - ERROR - Error: 404: No records found for this patient ID.
+2025-07-18 05:08:04,721 - ERROR - Error: 404: No records found for this patient ID.
+2025-07-18 09:56:46,946 - INFO - New patient 9999 – first-time registration.
+2025-07-18 09:56:46,950 - INFO - ✅ Patient record created for patient_id 9999
+2025-07-18 10:00:51,908 - INFO - New patient 10010 – first-time registration.
+2025-07-18 10:00:51,913 - INFO - ✅ Patient record created for patient_id 10010
+2025-07-18 10:01:24,522 - ERROR - Error: 404: No records found for this patient ID.
+2025-07-18 10:02:39,246 - INFO - [START] Inference API hit for patient: 13 from 172.18.0.1
+2025-07-18 10:02:39,634 - INFO - [SUCCESS] Processed inference for 13 | Duration: 0.39s
+2025-07-18 10:03:26,919 - INFO - Data inserted successfully for patient id 13
+2025-07-18 15:42:36,722 - INFO - New patient 11213 – first-time registration.
+2025-07-18 15:42:36,730 - INFO - ✅ Patient record created for patient_id 11213
+2025-07-18 15:44:12,627 - INFO - [START] Inference API hit for patient: 11213 from 172.18.0.1
+2025-07-18 15:44:13,155 - INFO - [SUCCESS] Processed inference for 11213 | Duration: 0.53s
+2025-07-18 15:44:22,570 - INFO - Data inserted successfully for patient id 11213
+2025-07-18 15:44:55,822 - INFO - [START] Inference API hit for patient: 11213 from 172.18.0.1
+2025-07-18 15:44:56,564 - INFO - [SUCCESS] Processed inference for 11213 | Duration: 0.74s
+2025-07-18 15:45:05,194 - INFO - Data inserted successfully for patient id 11213
+2025-07-18 16:26:42,620 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-07-18 16:35:25,315 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-07-18 16:35:34,890 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-07-18 16:36:16,310 - INFO - New patient 9 – first-time registration.
+2025-07-18 16:36:16,315 - INFO - ✅ Patient record created for patient_id 9
+2025-07-18 16:37:07,081 - INFO - [START] Inference API hit for patient: 009 from 172.18.0.1
+2025-07-18 16:37:07,912 - INFO - [SUCCESS] Processed inference for 009 | Duration: 0.83s
+2025-07-18 16:37:42,333 - INFO - Data inserted successfully for patient id 009
+2025-07-19 01:59:33,144 - INFO - [START] Inference API hit for patient: 123 from 172.18.0.1
+2025-07-19 01:59:33,592 - INFO - [SUCCESS] Processed inference for 123 | Duration: 0.45s
+2025-07-19 02:02:52,977 - INFO - [START] Inference API hit for patient: 55555 from 172.18.0.1
+2025-07-19 02:02:53,384 - INFO - [SUCCESS] Processed inference for 55555 | Duration: 0.41s
+2025-07-19 02:04:43,616 - ERROR - Error: MySQL Connection not available
+2025-07-19 02:04:48,736 - ERROR - Error: MySQL Connection not available
+2025-07-19 02:05:37,549 - INFO - [START] Inference API hit for patient: 1111 from 172.18.0.1
+2025-07-19 02:05:37,994 - INFO - [SUCCESS] Processed inference for 1111 | Duration: 0.45s
+2025-07-19 02:07:02,378 - INFO - [START] Inference API hit for patient: 1111 from 172.18.0.1
+2025-07-19 02:07:02,732 - INFO - [SUCCESS] Processed inference for 1111 | Duration: 0.35s
+2025-07-19 03:00:40,270 - INFO - New patient 33 – first-time registration.
+2025-07-19 03:00:40,281 - INFO - ✅ Patient record created for patient_id 33
+2025-07-19 03:01:06,666 - INFO - [START] Inference API hit for patient: 33 from 172.18.0.1
+2025-07-19 03:01:14,760 - INFO - [SUCCESS] Processed inference for 33 | Duration: 8.09s
+2025-07-19 03:01:23,033 - INFO - Data inserted successfully for patient id 33
+2025-07-19 03:03:00,810 - INFO - Data updated successfully for patient id 33
+2025-07-19 03:05:02,737 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-07-19 03:05:11,509 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-07-19 03:05:24,768 - ERROR - An error occurred: 400: Patient ID exists but with a different mobile number.
+2025-07-19 03:05:41,349 - INFO - New patient 11111111 – first-time registration.
+2025-07-19 03:05:41,354 - INFO - ✅ Patient record created for patient_id 11111111
+2025-07-19 03:06:09,300 - INFO - Data inserted successfully for patient id 55555
+2025-07-19 03:06:24,331 - INFO - [START] Inference API hit for patient: 11111111 from 172.18.0.1
+2025-07-19 03:06:24,703 - INFO - [SUCCESS] Processed inference for 11111111 | Duration: 0.37s
+2025-07-19 03:06:37,583 - INFO - Data inserted successfully for patient id 11111111
+2025-07-19 03:07:54,819 - INFO - New patient 6666 – first-time registration.
+2025-07-19 03:07:54,823 - ERROR - An error occurred: 400: Mobile number must contain exactly 10 digits.
+2025-07-19 03:08:13,922 - INFO - New patient 6666 – first-time registration.
+2025-07-19 03:08:13,928 - INFO - ✅ Patient record created for patient_id 6666
+2025-07-19 03:09:00,614 - INFO - [START] Inference API hit for patient: 6666 from 172.18.0.1
+2025-07-19 03:09:02,492 - INFO - [SUCCESS] Processed inference for 6666 | Duration: 1.88s

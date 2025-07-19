@@ -2,12 +2,12 @@
 
 import logging
 from datetime import datetime
-from config import connection  # Import the connection function
+from config import get_connection  # Import the connection function
 
 class MySQLHandler(logging.Handler):
     def __init__(self):
         super().__init__()
-        self.conn = connection()  # Get connection from your function
+        self.conn = get_connection()  # Get connection from your function
         if self.conn:
             self.cursor = self.conn.cursor()
 

@@ -34,7 +34,7 @@ from utlities import explanation_labels,CATEGORY_MAPPING
 from minio import Minio
 from minio.error import S3Error
 from datetime import timedelta
-from config import connection
+from config import get_connection
 import logger
 from logger import get_logger
 from database_crud_operation.database_operations import data_from_db
@@ -44,7 +44,7 @@ from Models import PatientForm
 
 
 #mysql connection
-connection=connection()
+connection=get_connection()
 
 app = FastAPI(title="FastAPI for DR", description="Diabetic Retinopathy Detection API", version="1.0.0")
 
@@ -54,8 +54,8 @@ app = FastAPI(title="FastAPI for DR", description="Diabetic Retinopathy Detectio
 app.add_middleware(SessionMiddleware, secret_key="444555")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
+    allow_origins=["https://c4bb55d851d5.ngrok-free.app","https://ai-ra.vercel.app","http://localhost:5173"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
