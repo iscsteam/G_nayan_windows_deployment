@@ -4,7 +4,8 @@ docker-compose up --build
 COMPOSE_BAKE=true docker-compose up --build 
 
 # To connect mysql image
-docker exec -it mysql-container mysql -u root -p
+docker exec -it mysql-container2 mysql -u root -p
+mysql -u iscs -p iscs_db #TO CINNECT TO DB
 with password 
 
 

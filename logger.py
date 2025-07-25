@@ -2,7 +2,7 @@
 
 import logging
 from datetime import datetime
-from config import get_connection  # Import the connection function
+from database_crud_operation.config import get_connection  # Import the connection function
 
 class MySQLHandler(logging.Handler):
     def __init__(self):

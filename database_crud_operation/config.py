@@ -2,33 +2,35 @@ import os
 from dotenv import load_dotenv
 import mysql.connector
 from mysql.connector import pooling, Error
+import time
 
 # Load environment variables from a .env file
 load_dotenv()
+for attempt in range(5):
+    try:
+        # --- Create a Connection Pool ---
+        # Instead of a single connection, we create a pool. Your application
+        # will borrow connections from this pool. This is more efficient and
+        # handles dropped connections automatically.
+        connection_pool = pooling.MySQLConnectionPool(
+            pool_name="fastapi_pool",
+            pool_size=5,  # Start with 5 connections, adjust as needed
+            pool_reset_session=True,  # Ensures you get a clean session
+            host=os.getenv("MYSQL_HOST"),
+            port=int(os.getenv("MYSQL_PORT", 3306)),
+            user=os.getenv("MYSQL_USER"),
+            password=os.getenv("MYSQL_PASSWORD"),
+            database=os.getenv("MYSQL_DATABASE")
+        )
+        print("✅ MySQL Connection Pool created successfully")
 
-try:
-    # --- Create a Connection Pool ---
-    # Instead of a single connection, we create a pool. Your application
-    # will borrow connections from this pool. This is more efficient and
-    # handles dropped connections automatically.
-    connection_pool = pooling.MySQLConnectionPool(
-        pool_name="fastapi_pool",
-        pool_size=5,  # Start with 5 connections, adjust as needed
-        pool_reset_session=True,  # Ensures you get a clean session
-        host=os.getenv("MYSQL_HOST", "mysql"),
-        port=int(os.getenv("MYSQL_PORT", 3306)),
-        user=os.getenv("MYSQL_USER", "iscs"),
-        password=os.getenv("MYSQL_PASSWORD"),
-        database=os.getenv("MYSQL_DB")
-    )
-    print("✅ MySQL Connection Pool created successfully")
-
-except Error as e:
-    print(f"❌ Error while creating MySQL connection pool: {e}")
-    # If the pool fails to create, set it to None.
-    # The get_connection function will handle this.
+        break
+    except Error as e:
+        print(f"❌ Attempt {attempt+1}: Error while creating MySQL connection pool: {e}")
+        time.sleep(5)
+else:
     connection_pool = None
-
+    print("❌ Failed to connect after multiple retries.")
 def get_connection():
     """Gets a connection from the created pool."""
     if connection_pool is None:

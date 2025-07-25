@@ -34,21 +34,27 @@ from utlities import explanation_labels,CATEGORY_MAPPING
 from minio import Minio
 from minio.error import S3Error
 from datetime import timedelta
-from config import get_connection
+from database_crud_operation.config import get_connection
 import logger
 from logger import get_logger
 from database_crud_operation.database_operations import data_from_db
-from prometheus_fastapi_instrumentator import Instrumentator
+#from prometheus_fastapi_instrumentator import Instrumentator
 from schemas import Form2,PatientPartialUpdate
 from Models import PatientForm
+from fastapi.security import OAuth2PasswordRequestForm
+from core.security import get_current_user
+from core.security import (
+    authenticate_user,
+    create_access_token,
+    get_current_user,
+    ACCESS_TOKEN_EXPIRE_MINUTES
+)
 
 
 #mysql connection
 connection=get_connection()
 
 app = FastAPI(title="FastAPI for DR", description="Diabetic Retinopathy Detection API", version="1.0.0")
-
-
 
 # Adding session middleware
 app.add_middleware(SessionMiddleware, secret_key="444555")
@@ -68,7 +74,24 @@ app.add_middleware(
 # )
 logger = get_logger()
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+@app.post("/token")
+def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+    user = authenticate_user(form_data.username, form_data.password)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password"
+        )
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": user["username"]},
+        expires_delta=access_token_expires
+    )
+    return {"access_token": access_token, "token_type": "bearer"}
 
+@app.get("/protected")
+def read_protected(user: dict = Depends(get_current_user)):
+    return {"message": f"Hello {user['username']}!"}
 
 
 # Initialize MinIO client
@@ -369,7 +392,7 @@ model.load_state_dict(checkpoint['model_state_dict'])
 model.eval()
 
 @app.post("/infer_for_diabetic_retinopathy/upload images")
-async def run_inference(patient_id: str, left_image: UploadFile = File(...), right_image: UploadFile = File(...),request: Request = None):
+async def run_inference(patient_id: str, left_image: UploadFile = File(...), right_image: UploadFile = File(...),request: Request = None,user: dict = Depends(get_current_user)):
     # Define transform
     transform = transforms.Compose([transforms.ToTensor()])
     start_time = time.time()
@@ -435,7 +458,7 @@ async def run_inference(patient_id: str, left_image: UploadFile = File(...), rig
     except Exception as e:
         return JSONResponse(content={"error": str(e)})
 @app.post("/submit_feedback_from_frontend/from_json_to_db")  
-async def submit_feedback(data: dict):  # Receive JSON payload directly
+async def submit_feedback(data: dict,user: dict = Depends(get_current_user)):  # Receive JSON payload directly
     try:
         # Extract data for left_eye and right_eye
         left_eye = data.get("left_eye")
@@ -527,16 +550,16 @@ async def submit_feedback(data: dict):  # Receive JSON payload directly
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
 @app.get("/get_data_from_api_logs")
-def get_api_logs():
+def get_api_logs(user: dict = Depends(get_current_user)):
     return data_from_db("SELECT * FROM api_logs")
 
 @app.get("/get_data_from_db")
-def get_dr_data():
+def get_dr_data(user: dict = Depends(get_current_user)):
     return data_from_db("SELECT * FROM diabetic_retinopathy")
 
 
 @app.post("/", status_code=status.HTTP_201_CREATED)
-def create_patient(patient_id: int, form: Form2):
+def create_patient(patient_id: int, form: Form2,user: dict = Depends(get_current_user)):
     conn = connection
     cursor = conn.cursor(dictionary=True)
 
@@ -621,7 +644,8 @@ def create_patient(patient_id: int, form: Form2):
 @app.get("/patients", status_code=status.HTTP_200_OK)
 def get_patients(
     page: int = Query(1, ge=1, description="Page number"),
-    limit: int = Query(10, ge=1, le=100, description="Items per page (max 100)")
+    limit: int = Query(10, ge=1, le=100, description="Items per page (max 100)"),
+    user: dict = Depends(get_current_user)
 ):
    
 
@@ -659,7 +683,7 @@ def get_patients(
 
 
 @app.get("/patients/{patient_id}", status_code=status.HTTP_200_OK)
-def get_patient_by_id(patient_id: int):
+def get_patient_by_id(patient_id: int,user: dict = Depends(get_current_user)):
     conn = connection
     cursor = conn.cursor(dictionary=True)
 
@@ -683,7 +707,7 @@ def get_patient_by_id(patient_id: int):
 
 
 @app.delete("/patient/{patient_id}", status_code=status.HTTP_200_OK)
-def delete_patient(patient_id: int):
+def delete_patient(patient_id: int,user: dict = Depends(get_current_user)):
     conn = connection  # Get a fresh DB connection
     cursor = conn.cursor(dictionary=True)
     try:
@@ -706,7 +730,7 @@ def delete_patient(patient_id: int):
         cursor.close()
         #conn.close()
 @app.patch("/update/{patient_id}")
-def update_patient_partial(patient_id: int, form: PatientPartialUpdate):
+def update_patient_partial(patient_id: int, form: PatientPartialUpdate,user: dict = Depends(get_current_user)):
     conn = connection
     cursor = conn.cursor(dictionary=True)
     try:
@@ -787,7 +811,7 @@ def update_patient_partial(patient_id: int, form: PatientPartialUpdate):
         #conn.close()
 
 @app.get("/patients", status_code=status.HTTP_200_OK)
-def get_all_patients():
+def get_all_patients(user: dict = Depends(get_current_user)):
     conn = connection  # No parentheses
     cursor = conn.cursor(dictionary=True)
     try:
@@ -805,7 +829,7 @@ def get_all_patients():
 
 
 @app.get("/combined-report/{patient_id}", status_code=status.HTTP_200_OK)
-def get_combined_patient_report(patient_id: int):
+def get_combined_patient_report(patient_id: int,user: dict = Depends(get_current_user)):
     try:
         conn = connection  # assuming 'connection' is your MySQL connection object
         cursor = conn.cursor(dictionary=True)
@@ -863,26 +887,26 @@ def get_combined_patient_report(patient_id: int):
         cursor.close()
 
     
-ALLOWED_PATHS_FOR_INSTRUMENTATION = {
-    "/get_data_from_api_logs",
-    "/get_data_from_db",
-    "/infer_for_diabetic_retinopathy/upload images"
-}
+# ALLOWED_PATHS_FOR_INSTRUMENTATION = {
+#     "/get_data_from_api_logs",
+#     "/get_data_from_db",
+#     "/infer_for_diabetic_retinopathy/upload images"
+# }
 
-# The path for the metrics endpoint itself
-METRICS_PATH = "/metrics" # Default, but good to have as a variable
+# # The path for the metrics endpoint itself
+# METRICS_PATH = "/metrics" # Default, but good to have as a variable
 
 
-def should_instrument_callback(request: Request) -> bool:
-    path = request.url.path
-    # 1. Explicitly DO NOT instrument requests to the /metrics endpoint itself
-    if path == METRICS_PATH:
-        return False
-    # 2. Instrument other allowed paths
-    if path in ALLOWED_PATHS_FOR_INSTRUMENTATION:
-        return True
-    # 3. Do not instrument any other paths
-    return False
+# def should_instrument_callback(request: Request) -> bool:
+#     path = request.url.path
+#     # 1. Explicitly DO NOT instrument requests to the /metrics endpoint itself
+#     if path == METRICS_PATH:
+#         return False
+#     # 2. Instrument other allowed paths
+#     if path in ALLOWED_PATHS_FOR_INSTRUMENTATION:
+#         return True
+#     # 3. Do not instrument any other paths
+#     return False
 
 # # Initialize Instrumentator
 # instrumentator = Instrumentator(
@@ -895,8 +919,8 @@ def should_instrument_callback(request: Request) -> bool:
 #     should_instrument_hook=should_instrument_callback
 # ).expose(app, endpoint=METRICS_PATH) # You can specify the endpoint path for expose too
 #
-instrumentator = Instrumentator()
-instrumentator.instrument(app).expose(app)
+# instrumentator = Instrumentator()
+# instrumentator.instrument(app).expose(app)
 
 if __name__ == "__main__":
     import uvicorn 

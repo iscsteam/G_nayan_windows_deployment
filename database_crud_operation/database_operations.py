@@ -1,5 +1,5 @@
 # Import the functions from your newly configured db_config.py
-from config import get_connection, create_tables
+from database_crud_operation.config import get_connection, create_tables
 
 def data_from_db(query: str):
     """
@@ -37,6 +37,7 @@ def data_from_db(query: str):
 if __name__ == "__main__":
     print("🚀 Initializing Application...")
     
+    get_connection()  # Ensure the connection pool is initialized
     # 1. On startup, ensure the tables exist.
     create_tables()
 

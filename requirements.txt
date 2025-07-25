@@ -17,5 +17,6 @@ torch
 torchvision
 mysql-connector-python
 sqlalchemy
-prometheus-fastapi-instrumentator>=6.0.0 # <--- CHANGE THIS
+# prometheus-fastapi-instrumentator>=6.0.0 # <--- CHANGE THIS
 ngrok
+python-jose[cryptography]

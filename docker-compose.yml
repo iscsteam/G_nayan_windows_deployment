@@ -35,6 +35,15 @@ services:
     networks:
       - app-network
     restart: always
+    
+  db_migration:
+    build: .
+    depends_on:
+      - mysql
+      - minio
+    command: ["python", "-m", "database_crud_operation.database_operations"]
+    networks:
+      - app-network
 
   minio:
     image: minio/minio

@@ -7,3 +7,4 @@ __pycache__/
 
 # Ignore Jupyter notebook file
 non-fundus.ipynb
+api_hits.log

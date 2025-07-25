@@ -262,3 +262,10 @@
 2025-07-19 03:08:13,928 - INFO - ✅ Patient record created for patient_id 6666
 2025-07-19 03:09:00,614 - INFO - [START] Inference API hit for patient: 6666 from 172.18.0.1
 2025-07-19 03:09:02,492 - INFO - [SUCCESS] Processed inference for 6666 | Duration: 1.88s
+2025-07-24 12:30:40,314 - ERROR - An error occurred: 1146 (42S02): Table 'iscs_db.patient_form' doesn't exist
+2025-07-24 13:24:30,083 - INFO - New patient 1 – first-time registration.
+2025-07-24 13:24:30,091 - ERROR - An error occurred: 400: Visual Acuity must be one of: Normal, Mild, Moderate, Severe, Proliferative
+2025-07-24 13:24:47,422 - INFO - New patient 1 – first-time registration.
+2025-07-24 13:24:47,436 - INFO - ✅ Patient record created for patient_id 1
+2025-07-24 13:39:23,497 - INFO - New patient 1 – first-time registration.
+2025-07-24 13:39:23,515 - INFO - ✅ Patient record created for patient_id 1
